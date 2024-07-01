@@ -9,8 +9,10 @@ public class LockerInteract : MonoBehaviour, IInteractable
         set { interactMessage = value; }
     }
 
+    public bool canInteract = true;
     [SerializeField] private DoorController doorController;
     [SerializeField] private AudioClip interactClip;
+    [SerializeField] private float clipVolume = 1f;
 
     [Header("Renderer")]
     [SerializeField] private MeshRenderer[] lockerMeshRenderer;
@@ -36,26 +38,76 @@ public class LockerInteract : MonoBehaviour, IInteractable
     public void SetDoorController(DoorController newDoor)
     {
         doorController = newDoor;
-        if (doorController != null && isPressed)
+        if (doorController != null)
         {
-            doorController.ForceOpen();
+            doorController.ForceState(isPressed);
         }
     }
 
     public virtual void Interact()
     {
+        if (!canInteract) return;
+
         isPressed = !isPressed;
-
-        anim.SetBool("leverOn", isPressed);
-        SoundManager.PlayAudioClip(interactClip);
-        GetComponent<InteractEvent>().CallInteract();
-
-        if(doorController != null)
+        if (doorController != null)
         {
             doorController.SetDoorActive(true, doorController.InteractMessage);
             doorController.Interact();
             doorController.SetDoorActive(false, doorController.InteractMessage);
         }
+
+        UpdateInteractFeedback();
     }
 
+    private void UpdateInteractFeedback()
+    {
+        anim.SetBool("isPressed", isPressed);
+
+        if (interactClip != null)
+            SoundManager.PlayAudioClipVolume(interactClip, clipVolume);
+
+        if (TryGetComponent(out InteractEvent interactEvent))
+            interactEvent.CallInteract();
+    }
+
+    private void ButtonCollision(bool state)
+    {
+        isPressed = state;
+        SetDoorController(doorController);
+        UpdateInteractFeedback();
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (canInteract) return;
+
+        ButtonCollision(true);
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (canInteract) return;
+
+        ButtonCollision(false);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (canInteract) return;
+
+        if (other.CompareTag("Player"))
+        {
+            ButtonCollision(true);
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (canInteract) return;
+
+        if (other.CompareTag("Player"))
+        {
+            ButtonCollision(false);
+        }
+    }
 }

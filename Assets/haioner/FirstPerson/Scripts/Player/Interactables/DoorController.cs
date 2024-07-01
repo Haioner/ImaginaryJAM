@@ -40,9 +40,9 @@ public class DoorController : MonoBehaviour, IInteractable
         interactMessage = _interactMessge;
     }
 
-    public void ForceOpen()
+    public void ForceState(bool state)
     {
-        _doorOpened = true;
+        _doorOpened = state;
         anim.SetBool("Door", _doorOpened);
         PlaySounds();
     }

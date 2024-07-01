@@ -31,7 +31,7 @@ public class InteractReticle : MonoBehaviour
             GameObject hitObject = hit.collider.gameObject;
             bool changingReticle = false;
 
-            if (hitObject.GetComponent<IInteractable>() != null)
+            if (hitObject.GetComponent<IInteractable>() != null && hitObject.GetComponent<IInteractable>().InteractMessage != "")
             {
                 reticleImage.sprite = interactableReticle;
                 changingReticle = true;

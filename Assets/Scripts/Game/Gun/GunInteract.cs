@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class GunInteract : MonoBehaviour, IInteractable
@@ -10,10 +11,12 @@ public class GunInteract : MonoBehaviour, IInteractable
     }
 
     [SerializeField] private GameObject playerGun;
+    [SerializeField] private TextMeshProUGUI tutorialGunText;
 
     public void Interact()
     {
         playerGun.SetActive(true);
+        tutorialGunText.gameObject.SetActive(true);
         Destroy(gameObject);
     }
 }
