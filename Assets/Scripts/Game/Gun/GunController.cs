@@ -10,6 +10,7 @@ public class GunController : MonoBehaviour
     [Header("Gun")]
     [SerializeField] private float cooldownTime = 1f;
     [SerializeField] private float shootDistance = 5f;
+    [SerializeField] private Transform shootPos;
 
     [Header("Feedback")]
     [SerializeField] private Material[] cylinderMat;
@@ -26,6 +27,7 @@ public class GunController : MonoBehaviour
     [SerializeField] private GameObject hitParticlePrefab;
 
     [Header("Line")]
+    [SerializeField] private float lineDestroyTimer = 0.05f;
     [SerializeField] private LineRenderer lineRenderer;
     [SerializeField] private Color lineColor;
 
@@ -61,8 +63,7 @@ public class GunController : MonoBehaviour
 
     private void PlayShootParticle()
     {
-        Vector3 shootPosition = transform.position; // Adjust this to the correct position where the gun shoots from
-        Instantiate(shootParticlePrefab, shootPosition, Quaternion.identity);
+        Instantiate(shootParticlePrefab, shootPos.position, Quaternion.identity);
     }
 
     private void PlayHitParticle(Vector3 hitPosition)
@@ -110,7 +111,7 @@ public class GunController : MonoBehaviour
             }
             UpdateFeedback();
             PlayHitParticle(hit.point);
-            DrawLine(transform.position, hit.point);
+            DrawLine(shootPos.position, hit.point);
         }
         else
         {
@@ -137,7 +138,7 @@ public class GunController : MonoBehaviour
         lineRenderer.SetPosition(0, start);
         lineRenderer.SetPosition(1, end);
         lineRenderer.enabled = true;
-        Invoke("DisableLine", 0.1f); // Adjust the duration as needed
+        Invoke("DisableLine", lineDestroyTimer); // Adjust the duration as needed
     }
 
     private void DisableLine()
