@@ -14723,11 +14723,11 @@ MonoBehaviour:
   lockerClip: {fileID: 8300000, guid: f285b97cbf871e64fbadbc0db53b0220, type: 3}
   doorClip: {fileID: 8300000, guid: 587624a99f2816740900c4db5a0fcaaf, type: 3}
   missClip: {fileID: 8300000, guid: b173ace81fd067b4fb3b41800794a66b, type: 3}
-  shootParticlePrefab: {fileID: 2815333280210889039, guid: 8ad1dcc5d802c06428860ef20ae35a63, type: 3}
-  hitParticlePrefab: {fileID: 2815333280210889039, guid: 8ad1dcc5d802c06428860ef20ae35a63, type: 3}
+  shootParticlePrefab: {fileID: 3158730526417110177, guid: 5b1e6276a2285344a982471cc8ef0332, type: 3}
+  hitParticlePrefab: {fileID: 3879336100543970048, guid: 923feeb5e7dc649478b1ea03408c648e, type: 3}
   lineDestroyTimer: 0.092
   lineRenderer: {fileID: 1884609018}
-  lineColor: {r: 0.9960785, g: 0.54509807, b: 0, a: 1}
+  lineColor: {r: 0.99215686, g: 0.53333336, b: 0, a: 1}
 --- !u!95 &2496429112060887364
 Animator:
   serializedVersion: 7
