@@ -17,12 +17,21 @@ public class DoorController : MonoBehaviour, IInteractable
     [SerializeField] private AudioClip closeClip;
     [SerializeField] private float delayCloseSound;
 
+    [Header("Renderer")]
+    [SerializeField] private MeshRenderer lockerMeshRenderer;
+    [SerializeField] private Material[] materials;
+
     private Animator anim;
     private bool _doorOpened = false;
 
     private void Awake()
     {
         anim = GetComponent<Animator>();
+    }
+
+    public void SetMaterial(int matIndex)
+    {
+        lockerMeshRenderer.material = materials[matIndex];
     }
 
     public void SetDoorActive(bool state, string _interactMessge)

@@ -12,6 +12,10 @@ public class LockerInteract : MonoBehaviour, IInteractable
     [SerializeField] private DoorController doorController;
     [SerializeField] private AudioClip interactClip;
 
+    [Header("Renderer")]
+    [SerializeField] private MeshRenderer[] lockerMeshRenderer;
+    [SerializeField] private Material[] materials;
+
     private Animator anim;
     private bool isPressed;
 
@@ -20,11 +24,19 @@ public class LockerInteract : MonoBehaviour, IInteractable
         anim = GetComponent<Animator>();
     }
 
+    public void SetMaterial(int matIndex)
+    {
+        foreach (var item in lockerMeshRenderer)
+        {
+            item.material = materials[matIndex];
+        }
+  
+    }
+
     public void SetDoorController(DoorController newDoor)
     {
         doorController = newDoor;
-
-        if (isPressed)
+        if (doorController != null && isPressed)
         {
             doorController.ForceOpen();
         }

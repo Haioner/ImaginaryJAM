@@ -365,7 +365,7 @@ public partial class @DefaultInput: IInputActionCollection2, IDisposable
                     ""name"": ""ThrowItem"",
                     ""type"": ""Button"",
                     ""id"": ""08b6e1db-910b-423b-8aa6-b9329e239a71"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
@@ -396,17 +396,6 @@ public partial class @DefaultInput: IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""fd1b4e6a-0a5d-4a65-8a1a-4958dfa80fb3"",
                     ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""HoldItem"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""0318f01d-9f9e-40c3-b90c-52c96c8e4f27"",
-                    ""path"": ""<Keyboard>/e"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",

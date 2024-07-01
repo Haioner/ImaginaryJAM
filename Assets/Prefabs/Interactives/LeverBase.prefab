@@ -316,6 +316,12 @@ MonoBehaviour:
   interactMessage: E Interact \n LMB Hold
   doorController: {fileID: 0}
   interactClip: {fileID: 8300000, guid: b25b59a4a1164c1489a3a8907c9e2011, type: 3}
+  lockerMeshRenderer:
+  - {fileID: 6295683643125705347}
+  - {fileID: 3625130103719753829}
+  materials:
+  - {fileID: 2100000, guid: df63cfe297c7fae468003f8dbe01cf16, type: 2}
+  - {fileID: 2100000, guid: cd5b83975faba6e44bbe99ba2679d8b4, type: 2}
 --- !u!1 &8058660711734350578
 GameObject:
   m_ObjectHideFlags: 0

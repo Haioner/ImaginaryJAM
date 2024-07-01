@@ -47,6 +47,19 @@ public class GunController : MonoBehaviour
     private void Update()
     {
         Shoot();
+        Clear();
+    }
+
+    private void Clear()
+    {
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            ResetLocker();
+            ResetDoor();
+            anim.SetTrigger("Clear");
+            SoundManager.PlayAudioClip(missClip);
+            UpdateFeedback();
+        }
     }
 
     private void Shoot()
@@ -57,7 +70,6 @@ public class GunController : MonoBehaviour
             PlayShootParticle();
             CheckForInteractable();
             lastShotTime = Time.time;
-            Debug.Log(GetShootHit().collider.name);
         }
     }
 
@@ -90,12 +102,18 @@ public class GunController : MonoBehaviour
 
             if (locker != null)
             {
+                ResetLocker();
+
                 currentLocker = locker;
+                currentLocker.SetMaterial(1);
                 SoundManager.PlayAudioClip(lockerClip);
             }
             else if (door != null)
             {
+                ResetDoor();
+
                 currentDoor = door;
+                currentDoor.SetMaterial(1);
                 SoundManager.PlayAudioClip(doorClip);
             }
             else
@@ -106,8 +124,6 @@ public class GunController : MonoBehaviour
             if (currentLocker != null && currentDoor != null)
             {
                 currentLocker.SetDoorController(currentDoor);
-                currentLocker = null;
-                currentDoor = null;
             }
             UpdateFeedback();
             PlayHitParticle(hit.point);
@@ -119,17 +135,36 @@ public class GunController : MonoBehaviour
         }
     }
 
-    private void UpdateFeedback()
+    private void ResetLocker()
     {
         if (currentLocker != null)
         {
+            currentLocker.SetDoorController(null);
+            currentLocker.SetMaterial(0);
+            currentLocker = null;
+        }
+    }
+
+    private void ResetDoor()
+    {
+        if (currentDoor != null)
+        {
+            currentDoor.SetMaterial(0);
+            currentDoor = null;
+        }
+    }
+
+    private void UpdateFeedback()
+    {
+        if (currentLocker != null || currentDoor != null)
+        {
             cylinderMesh.material = cylinderMat[1];
-            cylinderDOT.enabled = true;
+            cylinderDOT.DORestart();
         }
         else
         {
             cylinderMesh.material = cylinderMat[0];
-            cylinderDOT.enabled = false;
+            cylinderDOT.DOPause();
         }
     }
 
@@ -138,7 +173,7 @@ public class GunController : MonoBehaviour
         lineRenderer.SetPosition(0, start);
         lineRenderer.SetPosition(1, end);
         lineRenderer.enabled = true;
-        Invoke("DisableLine", lineDestroyTimer); // Adjust the duration as needed
+        Invoke("DisableLine", lineDestroyTimer);
     }
 
     private void DisableLine()
