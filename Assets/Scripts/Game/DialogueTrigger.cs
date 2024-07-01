@@ -1,0 +1,45 @@
+using System.Collections.Generic;
+using PixelCrushers.DialogueSystem;
+using UnityEngine.AI;
+using UnityEngine;
+
+public class DialogueTrigger : MonoBehaviour
+{
+    [SerializeField] private bool interactOnce = false;
+    [SerializeField] private DialogueSystemTrigger dialogueTrigger;
+    [SerializeField] private NavMeshAgent agent;
+    [SerializeField] List<Transform> targetLocation = new List<Transform>();
+    private bool dialogueTriggered = false;
+    private int _currentTarget;
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player") && !dialogueTriggered)
+        {
+            StartDialogue();
+
+            if (interactOnce)
+                dialogueTriggered = true;
+        }
+    }
+
+    private void StartDialogue()
+    {
+        if (DialogueManager.isConversationActive)
+            DialogueManager.StopConversation();
+
+        dialogueTrigger.OnUse();
+    }
+
+    public void MoveToTargetLocation()
+    {
+        if (agent != null && targetLocation != null)
+        {
+            if (_currentTarget <= targetLocation.Count)
+            {
+                agent.SetDestination(targetLocation[_currentTarget].position);
+                _currentTarget++;
+            }
+        }
+    }
+}
