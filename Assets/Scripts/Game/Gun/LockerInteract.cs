@@ -13,6 +13,7 @@ public class LockerInteract : MonoBehaviour, IInteractable
     [SerializeField] private DoorController doorController;
     [SerializeField] private AudioClip interactClip;
     [SerializeField] private float clipVolume = 1f;
+    public bool canGunConnect = true;
 
     [Header("Renderer")]
     [SerializeField] private MeshRenderer[] lockerMeshRenderer;
@@ -20,6 +21,7 @@ public class LockerInteract : MonoBehaviour, IInteractable
 
     private Animator anim;
     private bool isPressed;
+    private int collidersCount;
 
     private void Awake()
     {
@@ -81,6 +83,7 @@ public class LockerInteract : MonoBehaviour, IInteractable
     {
         if (canInteract) return;
 
+        collidersCount++;
         ButtonCollision(true);
     }
 
@@ -88,15 +91,18 @@ public class LockerInteract : MonoBehaviour, IInteractable
     {
         if (canInteract) return;
 
-        ButtonCollision(false);
+        collidersCount--;
+        if (collidersCount <= 0)
+            ButtonCollision(false);
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (canInteract) return;
 
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") || other.CompareTag("Metic"))
         {
+            collidersCount++;
             ButtonCollision(true);
         }
     }
@@ -105,9 +111,11 @@ public class LockerInteract : MonoBehaviour, IInteractable
     {
         if (canInteract) return;
 
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") || other.CompareTag("Metic"))
         {
-            ButtonCollision(false);
+            collidersCount--;
+            if (collidersCount <= 0)
+                ButtonCollision(false);
         }
     }
 }

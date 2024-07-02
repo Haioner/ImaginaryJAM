@@ -114,7 +114,7 @@ public class Grab_Items : MonoBehaviour
         {
             if (grabbing)
             {
-				Reset();
+				ResetGrab();
 				grabbing = false;
 			}
 
@@ -147,7 +147,7 @@ public class Grab_Items : MonoBehaviour
 
             if (_defaultInput.Grab.HoldItem.WasPressedThisFrame() || Input.GetMouseButtonUp(0))
             {
-                Reset();
+                ResetGrab();
                 grabbing = false;
             }
             else if (_defaultInput.Grab.ThrowItem.WasPressedThisFrame())
@@ -235,13 +235,13 @@ public class Grab_Items : MonoBehaviour
 		if (applyImpulse)
 		{
 			targetRB.linearVelocity = objTransform.forward * impulseForce;
-			Reset();
+			ResetGrab();
 			grabbing = false;
 			applyImpulse = false;
 		}
 	}
 
-    private void Reset()
+    private void ResetGrab()
 	{
         SetViewState(true);
         //Reset Object Settings	
@@ -255,6 +255,12 @@ public class Grab_Items : MonoBehaviour
 
 		if (m_lineRenderer != null)
 			m_lineRenderer.enabled = false;
+	}
+
+	public void ClearGrab()
+	{
+		ResetGrab();
+		grabbing = false;
 	}
 
     #endregion

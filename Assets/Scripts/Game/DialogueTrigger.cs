@@ -37,6 +37,7 @@ public class DialogueTrigger : MonoBehaviour
         {
             if (_currentTarget <= targetLocation.Count)
             {
+                agent.stoppingDistance = 0;
                 agent.SetDestination(targetLocation[_currentTarget].position);
                 _currentTarget++;
             }

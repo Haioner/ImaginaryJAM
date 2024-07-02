@@ -9,8 +9,9 @@ public class GunController : MonoBehaviour
 
     [Header("Gun")]
     [SerializeField] private float cooldownTime = 1f;
-    [SerializeField] private float shootDistance = 5f;
+    public float shootDistance = 50f;
     [SerializeField] private Transform shootPos;
+    [SerializeField] private LayerMask rayLayer;
 
     [Header("Feedback")]
     [SerializeField] private Material[] cylinderMat;
@@ -47,19 +48,20 @@ public class GunController : MonoBehaviour
     private void Update()
     {
         Shoot();
-        Clear();
+
+        if (Input.GetKeyDown(KeyCode.F))
+            Clear();
     }
 
-    private void Clear()
+    public void Clear()
     {
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            ResetLocker();
-            ResetDoor();
-            anim.SetTrigger("Clear");
-            SoundManager.PlayAudioClip(missClip);
-            UpdateFeedback();
-        }
+        if (currentDoor == null && currentLocker == null) return;
+
+        ResetLocker();
+        ResetDoor();
+        anim.SetTrigger("Clear");
+        SoundManager.PlayAudioClip(missClip);
+        UpdateFeedback();
     }
 
     private void Shoot()
@@ -87,7 +89,7 @@ public class GunController : MonoBehaviour
     {
         Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
-        Physics.Raycast(ray, out hit, shootDistance);
+        Physics.Raycast(ray, out hit, shootDistance, rayLayer);
         return hit;
     }
 
@@ -100,7 +102,7 @@ public class GunController : MonoBehaviour
             LockerInteract locker = hit.collider.GetComponent<LockerInteract>();
             DoorController door = hit.collider.GetComponent<DoorController>();
 
-            if (locker != null)
+            if (locker != null && locker.canGunConnect)
             {
                 ResetLocker();
 
@@ -133,6 +135,12 @@ public class GunController : MonoBehaviour
         {
             lineRenderer.enabled = false;
         }
+    }
+
+    public void CallLockerInteract()
+    {
+        if (currentLocker == null) return;
+        currentLocker.Interact();
     }
 
     private void ResetLocker()

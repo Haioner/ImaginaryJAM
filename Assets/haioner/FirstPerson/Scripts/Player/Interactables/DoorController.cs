@@ -29,6 +29,14 @@ public class DoorController : MonoBehaviour, IInteractable
         anim = GetComponent<Animator>();
     }
 
+    public void ChangeInitialMat(Material material)
+    {
+        if (materials.Length > 0)
+        {
+            materials[0] = material;
+        }
+    }
+
     public void SetMaterial(int matIndex)
     {
         lockerMeshRenderer.material = materials[matIndex];
@@ -38,6 +46,9 @@ public class DoorController : MonoBehaviour, IInteractable
     {
         canInteract = state;
         interactMessage = _interactMessge;
+
+        if (TryGetComponent(out InteractEvent interactEvent) && state)
+            interactEvent.CallInteract();
     }
 
     public void ForceState(bool state)
@@ -45,6 +56,9 @@ public class DoorController : MonoBehaviour, IInteractable
         _doorOpened = state;
         anim.SetBool("Door", _doorOpened);
         PlaySounds();
+
+        if (TryGetComponent(out InteractEvent interactEvent) && state)
+            interactEvent.CallInteract();
     }
 
     public void Interact()
@@ -52,7 +66,12 @@ public class DoorController : MonoBehaviour, IInteractable
         PlaySounds();
 
         if (canInteract)
+        {
             DoorAnimations();
+
+            if (TryGetComponent(out InteractEvent interactEvent))
+                interactEvent.CallInteract();
+        }
     }
 
     private void DoorAnimations()
