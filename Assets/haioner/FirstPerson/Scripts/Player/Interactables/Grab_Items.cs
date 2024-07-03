@@ -259,8 +259,12 @@ public class Grab_Items : MonoBehaviour
 
 	public void ClearGrab()
 	{
-		ResetGrab();
-		grabbing = false;
+		if (grabbing)
+		{
+			ResetGrab();
+			grabbing = false;
+
+		}
 	}
 
     #endregion

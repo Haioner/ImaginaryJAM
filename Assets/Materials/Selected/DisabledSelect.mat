@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ClearMat
+  m_Name: DisabledSelect
   m_Shader: {fileID: -6465566751694194690, guid: c535de5ec9787ed4f8dc094d049bab1f, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -115,6 +115,6 @@ Material:
     - _OutlineColor: {r: 1, g: 0.7533744, b: 0, a: 1}
     - _RimColor: {r: 1, g: 1, b: 1, a: 1}
     - _SpecularColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Tint: {r: 1, g: 0.44059038, b: 0, a: 0.2627451}
+    - _Tint: {r: 0.3584906, g: 0.3584906, b: 0.3584906, a: 0.2627451}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

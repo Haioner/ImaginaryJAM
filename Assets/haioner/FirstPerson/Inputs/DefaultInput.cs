@@ -77,7 +77,7 @@ public partial class @DefaultInput: IInputActionCollection2, IDisposable
                     ""name"": ""Sprint"",
                     ""type"": ""Button"",
                     ""id"": ""b31e573d-bbbc-4363-9849-0e4462dbaeaa"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
@@ -213,17 +213,6 @@ public partial class @DefaultInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Crouch"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""92f633fd-504a-472a-b926-8c3203461cf3"",
-                    ""path"": ""<Keyboard>/z"",
-                    ""interactions"": ""Press"",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Prone"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },

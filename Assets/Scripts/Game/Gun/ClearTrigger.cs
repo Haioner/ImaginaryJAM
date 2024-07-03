@@ -48,6 +48,11 @@ public class ClearTrigger : MonoBehaviour
         isEnable = false;
     }
 
+    public bool GetIsEnable()
+    {
+        return isEnable;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (!isEnable) return;

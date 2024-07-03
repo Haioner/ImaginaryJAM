@@ -110,7 +110,7 @@ public class GunController : MonoBehaviour
                 currentLocker.SetMaterial(1);
                 SoundManager.PlayAudioClip(lockerClip);
             }
-            else if (door != null)
+            else if (door != null && door.canGunConnect)
             {
                 ResetDoor();
 

@@ -14,21 +14,24 @@ public class DialogueTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player") && !dialogueTriggered)
+        if (other.CompareTag("Player"))
         {
             StartDialogue();
-
-            if (interactOnce)
-                dialogueTriggered = true;
         }
     }
 
-    private void StartDialogue()
+    public void StartDialogue()
     {
-        if (DialogueManager.isConversationActive)
-            DialogueManager.StopConversation();
+        if (!dialogueTriggered)
+        {
+            if (interactOnce)
+                dialogueTriggered = true;
 
-        dialogueTrigger.OnUse();
+            if (DialogueManager.isConversationActive)
+                DialogueManager.StopConversation();
+
+            dialogueTrigger.OnUse();
+        }
     }
 
     public void MoveToTargetLocation()

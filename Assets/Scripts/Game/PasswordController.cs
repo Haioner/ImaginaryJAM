@@ -35,6 +35,9 @@ public class PasswordController : MonoBehaviour, IInteractable
         {
             SoundManager.PlayAudioClip(deniedClip);
             StartCoroutine(UpdateInteractMessage());
+
+            if (TryGetComponent(out InteractEvent interactEvent))
+                interactEvent.CallInteract();
         }
     }
 

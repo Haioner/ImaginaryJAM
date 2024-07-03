@@ -16,6 +16,7 @@ public class DoorController : MonoBehaviour, IInteractable
     [SerializeField] private AudioClip lockedClip;
     [SerializeField] private AudioClip closeClip;
     [SerializeField] private float delayCloseSound;
+    public bool canGunConnect = true;
 
     [Header("Renderer")]
     [SerializeField] private MeshRenderer lockerMeshRenderer;

@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: WallButton
+  m_Controller: {fileID: 9100000, guid: 292003419a162674da0196728ecb2e1c, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 7c0bf4edb69da5c43a67f0217509d8e2, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 3bd5db0b0e4fdc34595b2a36e67067b9, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: fb7fdf35efc7f3d4786724d936bbd4ba, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 6fd2da1f4c3571748b8fae4081d093ae, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 0f2fab45e2c8618478e4cc0d1d08d1df, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: a76c894a37f648246ac2d3683893d361, type: 2}

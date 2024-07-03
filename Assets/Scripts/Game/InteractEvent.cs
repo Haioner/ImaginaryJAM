@@ -15,6 +15,9 @@ public class InteractEvent : MonoBehaviour
             interactCount--;
             Invoke("InvokeInteractEvent", delayToCall);
         }
+
+        if(interactCount == -1)
+            Invoke("InvokeInteractEvent", delayToCall);
     }
 
     private void InvokeInteractEvent()
