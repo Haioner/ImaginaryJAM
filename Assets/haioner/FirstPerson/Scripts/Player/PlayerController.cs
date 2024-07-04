@@ -100,6 +100,12 @@ public class PlayerController : MonoBehaviour
 
     #region ControllersMethods
 
+    public void SetSensitivity(float value)
+    {
+        viewSettings.ViewXSensitivity = value;
+        viewSettings.ViewYSensitivity = value;
+    }
+
     public void SetViewState(bool state) => viewSettings.CanView = state;
 
     public void SetRotations(Vector3 cameraRot, Vector3 character)
