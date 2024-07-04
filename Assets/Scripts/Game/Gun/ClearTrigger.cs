@@ -45,6 +45,9 @@ public class ClearTrigger : MonoBehaviour
             GetComponent<DoorController>().ChangeInitialMat(meshRenderer.material);
         }
 
+        if (gunController != null)
+            gunController.shootDistance = 50f;
+
         isEnable = false;
     }
 
@@ -95,6 +98,10 @@ public class ClearTrigger : MonoBehaviour
                 break;
             case TriggerType.Switch:
                 gunController.CallLockerInteract();
+
+                if (gunController != null)
+                    gunController.shootDistance = 50f;
+                
                 gunController.Clear();
                 break;
         }

@@ -19312,7 +19312,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 117708685267558275, guid: a64dfba01484fa045aa11bcf7b9b7de9, type: 3}
       propertyPath: canGunConnect
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 117708685267558275, guid: a64dfba01484fa045aa11bcf7b9b7de9, type: 3}
       propertyPath: doorController

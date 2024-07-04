@@ -55,7 +55,11 @@ public class DoorController : MonoBehaviour, IInteractable
     public void ForceState(bool state)
     {
         _doorOpened = state;
+        if (!state)
+            anim.Play("Closed");
+
         anim.SetBool("Door", _doorOpened);
+
         PlaySounds();
 
         if (TryGetComponent(out InteractEvent interactEvent) && state)

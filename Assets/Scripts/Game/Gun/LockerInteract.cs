@@ -30,6 +30,13 @@ public class LockerInteract : MonoBehaviour, IInteractable
         anim = GetComponent<Animator>();
     }
 
+    private void Start()
+    {
+        anim.SetBool("isPressed", isPressed);
+        if (doorController != null)
+            doorController.ForceState(isPressed);
+    }
+
     private void Update()
     {
         List<Collider> toRemove = new List<Collider>();

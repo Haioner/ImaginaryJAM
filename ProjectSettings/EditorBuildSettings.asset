@@ -6,11 +6,11 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Loading.unity
-    guid: d342b81ddc3141f4da3c94c2d5878dc7
-  - enabled: 1
     path: Assets/Scenes/Begin.unity
     guid: c6dd459d8ed90224a8b15ba7ae47bc11
+  - enabled: 1
+    path: Assets/Scenes/Loading.unity
+    guid: d342b81ddc3141f4da3c94c2d5878dc7
   - enabled: 1
     path: Assets/Scenes/PrisonCell.unity
     guid: 99c9720ab356a0642a771bea13969a05
@@ -23,6 +23,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Escape.unity
     guid: bbfd0472f3896f140b4358f73c01a6b4
+  - enabled: 1
+    path: Assets/Scenes/Final.unity
+    guid: 3a3a6ad041b1ab54b871ec49a5f0abb4
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
