@@ -23,4 +23,9 @@ public class TransitionController : MonoBehaviour
     {
         SceneManager.LoadScene(scene);
     }
+
+    public void LoadingChangeScene(string sceneName)
+    {
+        LoadingData.instance.ChangeScene(sceneName);
+    }
 }

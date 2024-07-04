@@ -23,7 +23,7 @@ public class DoorController : MonoBehaviour, IInteractable
     [SerializeField] private Material[] materials;
 
     private Animator anim;
-    private bool _doorOpened = false;
+    [SerializeField] private bool _doorOpened = false;
 
     private void Awake()
     {
@@ -54,9 +54,10 @@ public class DoorController : MonoBehaviour, IInteractable
 
     public void ForceState(bool state)
     {
-        _doorOpened = state;
-        if (!state)
+        if (!state && _doorOpened)
             anim.Play("Closed");
+
+        _doorOpened = state;
 
         anim.SetBool("Door", _doorOpened);
 

@@ -1330,11 +1330,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   reticleImage: {fileID: 7627514026127559522}
   defaultReticle: {fileID: 21300000, guid: e597004ec5246fe4b8c52efd3d57c3b0, type: 3}
-  interactableReticle: {fileID: 779886656, guid: 155350299bb1383468a804950589047b, type: 3}
+  interactableReticle: {fileID: 1761445583, guid: 15c6dccbd925990408c239e2ae8a18e3, type: 3}
   grabReticle: {fileID: 21300000, guid: 99fe689102fcfc94a83695e8f5466102, type: 3}
   grabbableLayer:
     serializedVersion: 2
     m_Bits: 256
+  maxRaycastDistance: 3
 --- !u!1 &6886198636379404785
 GameObject:
   m_ObjectHideFlags: 0
