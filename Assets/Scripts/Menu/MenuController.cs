@@ -13,4 +13,14 @@ public class MenuController : MonoBehaviour
     {
         Application.Quit();
     }
+
+    private void StartPauseCanState()
+    {
+        FindFirstObjectByType<BackToMenu>().GetComponent<InputState>().SetCanMouseState(false);
+    }
+
+    public void PlayButtonCursor()
+    {
+        FindFirstObjectByType<BackToMenu>().GetComponent<InputState>().SetCanMouseState(true);
+    }
 }

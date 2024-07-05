@@ -264,14 +264,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canInteract: 0
   interactMessage: Closed
-  openClip: {fileID: 0}
+  openClip: {fileID: 8300000, guid: 1d97fea6b5f1b2340b20db86b6cd8d60, type: 3}
   lockedClip: {fileID: 0}
-  closeClip: {fileID: 0}
+  closeClip: {fileID: 8300000, guid: e102acefbb0631c46b5bb4a9c4cc3efb, type: 3}
   delayCloseSound: 0
+  canGunConnect: 1
   lockerMeshRenderer: {fileID: 4722371876525812320}
   materials:
   - {fileID: 2100000, guid: 12acab936060cec4f9d02e6b76774e29, type: 2}
   - {fileID: 2100000, guid: 20c4b40884c0a0545bf687ff390bc9ca, type: 2}
+  _doorOpened: 0
 --- !u!95 &2358169101038547484
 Animator:
   serializedVersion: 7

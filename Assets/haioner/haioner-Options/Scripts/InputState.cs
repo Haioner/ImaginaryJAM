@@ -14,6 +14,11 @@ public class InputState : MonoBehaviour
             ChangeState();
     }
 
+    public void SetCanMouseState(bool canSet)
+    {
+        canSetMouseState = canSet;
+    }
+
     public void ChangeState()
     {
         _currentState = !_currentState;
