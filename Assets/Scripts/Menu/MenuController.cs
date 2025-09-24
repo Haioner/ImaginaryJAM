@@ -19,8 +19,9 @@ public class MenuController : MonoBehaviour
         FindFirstObjectByType<BackToMenu>().GetComponent<InputState>().SetCanMouseState(false);
     }
 
-    public void PlayButtonCursor()
+    public void PlayButton()
     {
+        LoadingData.instance.ChangeScene("Begin");
         FindFirstObjectByType<BackToMenu>().GetComponent<InputState>().SetCanMouseState(true);
     }
 }
